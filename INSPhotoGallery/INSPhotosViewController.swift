@@ -102,7 +102,7 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
     }()
     
     private var interactiveDismissal: Bool = false
-    private var statusBarHidden = false
+    private var statusBarHidden = true
     private var shouldHandleLongPressGesture = false
     
     private func newCurrentPhotoAfterDeletion(currentPhotoIndex: Int) -> INSPhotoViewable? {
