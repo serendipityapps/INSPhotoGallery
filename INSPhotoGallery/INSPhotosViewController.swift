@@ -102,7 +102,7 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
     }()
     
     private var interactiveDismissal: Bool = false
-    private var statusBarHidden = true
+	public var statusBarHidden = true
     private var shouldHandleLongPressGesture = false
     
     private func newCurrentPhotoAfterDeletion(currentPhotoIndex: Int) -> INSPhotoViewable? {
@@ -198,10 +198,10 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
         
         // This fix issue that navigationBar animate to up
         // when presentingViewController is UINavigationViewController
-        statusBarHidden = true
-        UIView.animate(withDuration: 0.25) { () -> Void in
-            self.setNeedsStatusBarAppearanceUpdate()
-        }
+//        statusBarHidden = true
+//        UIView.animate(withDuration: 0.25) { () -> Void in
+//            self.setNeedsStatusBarAppearanceUpdate()
+//        }
         updateCurrentPhotosInformation()
     }
     
@@ -422,9 +422,9 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
     // MARK: - Status Bar
     
     open override var prefersStatusBarHidden: Bool {
-        if let parentStatusBarHidden = presentingViewController?.prefersStatusBarHidden , parentStatusBarHidden == true {
-            return parentStatusBarHidden
-        }
+//        if let parentStatusBarHidden = presentingViewController?.prefersStatusBarHidden , parentStatusBarHidden == true {
+//            return parentStatusBarHidden
+//        }
         return statusBarHidden
     }
     
