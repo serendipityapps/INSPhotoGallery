@@ -169,8 +169,19 @@ open class INSPhotosOverlayView: UIView , INSPhotosOverlayViewable {
         navigationItem = UINavigationItem(title: "")
         navigationBar.items = [navigationItem]
         addSubview(navigationBar)
-        
-        let topConstraint = NSLayoutConstraint(item: navigationBar, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0)
+
+		let topConstraint: NSLayoutConstraint
+		if #available(iOS 11.0, *) {
+			topConstraint = navigationBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor)
+		} else {
+			// Fallback on earlier versions
+			if #available(iOS 9.0, *) {
+				topConstraint = navigationBar.topAnchor.constraint(equalTo: self.topAnchor)
+			} else {
+				// Fallback on earlier versions
+				topConstraint = NSLayoutConstraint(item: navigationBar, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0)
+			}
+		}
         let widthConstraint = NSLayoutConstraint(item: navigationBar, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0, constant: 0.0)
         let horizontalPositionConstraint = NSLayoutConstraint(item: navigationBar, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         self.addConstraints([topConstraint,widthConstraint,horizontalPositionConstraint])
