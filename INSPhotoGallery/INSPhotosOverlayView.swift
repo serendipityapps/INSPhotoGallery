@@ -20,7 +20,7 @@
 import UIKit
 
 public protocol INSPhotosOverlayViewable:class {
-    weak var photosViewController: INSPhotosViewController? { get set }
+    var photosViewController: INSPhotosViewController? { get set }
     
     func populateWithPhoto(_ photo: INSPhotoViewable)
     func setHidden(_ hidden: Bool, animated: Bool)
@@ -57,7 +57,7 @@ open class INSPhotosOverlayView: UIView , INSPhotosOverlayViewable {
     }
     
     #if swift(>=4.0)
-    var titleTextAttributes: [NSAttributedStringKey : AnyObject] = [:] {
+    var titleTextAttributes: [NSAttributedString.Key : AnyObject] = [:] {
         didSet {
             navigationBar.titleTextAttributes = titleTextAttributes
         }
